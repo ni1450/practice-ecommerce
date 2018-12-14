@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, get_user_model
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 from .forms import ContactForm
@@ -25,6 +25,13 @@ def contact_page(request):
     }
     if contact_form.is_valid():
         print(contact_form.cleaned_data)
+        if request.is_ajax():
+            return JsonResponse({"message": "Thank you for your submission"})
+
+    if contact_form.errors:
+        errors = contact_form.errors.as_json()
+        if request.is_ajax():
+            return HttpResponse(errors, status=400, content_type='application/json')
     # if request.method == "POST":
     #   print(request.POST)
     return render(request, "contact/view.html", context)
@@ -38,10 +45,8 @@ def home_page_old(request):
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
     <title>Hello, world!</title>
   </head>
   <body>

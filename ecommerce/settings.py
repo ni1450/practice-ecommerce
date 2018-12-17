@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # our apps
     'accounts',
     'addresses',
+    'analytics',
     'billing',
     'carts',
     'orders',
@@ -48,6 +49,8 @@ INSTALLED_APPS = [
     'search',
     'tags',
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

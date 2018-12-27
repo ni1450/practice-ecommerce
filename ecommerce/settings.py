@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'analytics',
     'billing',
     'carts',
+    'marketing',
     'orders',
     'products',
     'search',
@@ -54,6 +55,11 @@ AUTH_USER_MODEL = 'accounts.User'
 
 FORCE_SESSION_TO_ONE = False
 FORCE_INACTIVE_USER_ENDSESSION = False
+
+MAILCHIMP_API_KEY = 'c33c96eb6494f03a643380b6eef49248-us7'
+MAILCHIMP_DATA_CENTER = 'us7'
+MAILCHIMP_EMAIL_LIST_ID = '2a76659520'
+
 
 STRIPE_SECRET_KEY = "sk_test_sfV52hBYwCO5Jtvu9NRtJTlt"
 STRIPE_PUB_KEY = 'pk_test_Jqmc6mRzEWuEynf8ObY5J90c'
